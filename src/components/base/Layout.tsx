@@ -10,7 +10,7 @@ export default function Layout() {
       <SidebarInset>
         <Header />
 
-        <main>
+        <main className="p-10">
           <Outlet />
         </main>
       </SidebarInset>

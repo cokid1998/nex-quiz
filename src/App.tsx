@@ -4,16 +4,17 @@ import Menu from "./page/Menu";
 import Cafe from "./page/Cafe";
 import Discount from "./page/Discount";
 import Layout from "./components/base/Layout";
+import { HOME, MENU, CAFE, DISCOUNT } from "@/constants/url";
 
 function App() {
   return (
     <BrowserRouter>
       <Routes>
-        <Route path="/" element={<Layout />}>
+        <Route path={HOME} element={<Layout />}>
           <Route index element={<Root />} />
-          <Route path="/menu" element={<Menu />} />
-          <Route path="/cafe" element={<Cafe />} />
-          <Route path="/discount" element={<Discount />} />
+          <Route path={MENU} element={<Menu />} />
+          <Route path={CAFE} element={<Cafe />} />
+          <Route path={DISCOUNT} element={<Discount />} />
         </Route>
       </Routes>
     </BrowserRouter>
