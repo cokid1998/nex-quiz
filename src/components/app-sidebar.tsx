@@ -7,7 +7,7 @@ import { UtensilsCrossed, Coffee, Tag } from "lucide-react";
 const NAV_MENU = [
   { title: "음식 레시피", url: MENU, icon: UtensilsCrossed },
   { title: "음료 레시피", url: CAFE, icon: Coffee },
-  { title: "할인", url: DISCOUNT, icon: Tag },
+  { title: "현금 할인", url: DISCOUNT, icon: Tag },
 ];
 
 export function AppSidebar({ ...props }: React.ComponentProps<typeof Sidebar>) {
