@@ -1,41 +1,14 @@
-import * as React from "react";
-
-import {
-  Sidebar,
-  SidebarContent,
-  SidebarGroup,
-  SidebarGroupContent,
-  SidebarGroupLabel,
-  SidebarHeader,
-  SidebarMenu,
-  SidebarMenuButton,
-  SidebarMenuItem,
-} from "@/components/ui/sidebar";
+import { Sidebar, SidebarHeader } from "@/components/ui/sidebar";
 import { NavLink } from "react-router";
+import { CAFE, DISCOUNT, MENU } from "@/constants/url";
+import { cn } from "@/lib/utils";
+import { UtensilsCrossed, Coffee, Tag } from "lucide-react";
 
-// This is sample data.
-const data = {
-  navMain: [
-    {
-      title: "문제 종류들",
-      url: "/",
-      items: [
-        {
-          title: " 🍽️ 음식 레시피",
-          url: "/menu",
-        },
-        {
-          title: "🍹 음료 레시피",
-          url: "/cafe",
-        },
-        {
-          title: "💸 할인",
-          url: "/discount",
-        },
-      ],
-    },
-  ],
-};
+const NAV_MENU = [
+  { title: "음식 레시피", url: MENU, icon: UtensilsCrossed },
+  { title: "음료 레시피", url: CAFE, icon: Coffee },
+  { title: "할인", url: DISCOUNT, icon: Tag },
+];
 
 export function AppSidebar({ ...props }: React.ComponentProps<typeof Sidebar>) {
   return (
@@ -43,24 +16,23 @@ export function AppSidebar({ ...props }: React.ComponentProps<typeof Sidebar>) {
       <SidebarHeader className="border-b py-4 text-xl text-center h-15">
         넥스 레시피 퀴즈
       </SidebarHeader>
-      <SidebarContent>
-        {data.navMain.map((item) => (
-          <SidebarGroup key={item.title}>
-            {/* <SidebarGroupLabel>{item.title}</SidebarGroupLabel> */}
-            <SidebarGroupContent>
-              <SidebarMenu className="gap-2">
-                {item.items.map((item) => (
-                  <SidebarMenuItem key={item.title} className="px-1 py-2">
-                    <SidebarMenuButton asChild className="text-lg">
-                      <NavLink to={item.url}>{item.title}</NavLink>
-                    </SidebarMenuButton>
-                  </SidebarMenuItem>
-                ))}
-              </SidebarMenu>
-            </SidebarGroupContent>
-          </SidebarGroup>
-        ))}
-      </SidebarContent>
+
+      {NAV_MENU.map((menu) => (
+        <NavLink
+          key={menu.url}
+          to={menu.url}
+          className={({ isActive }) =>
+            cn(
+              "flex items-center gap-2.5 px-4 py-4 rounded-md text-lg transition-colors",
+              "text-muted-foreground hover:text-foreground hover:bg-muted",
+              isActive && "bg-muted text-foreground font-medium",
+            )
+          }
+        >
+          <menu.icon size={20} aria-hidden="true" />
+          <span>{menu.title}</span>
+        </NavLink>
+      ))}
     </Sidebar>
   );
 }
