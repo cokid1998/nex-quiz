@@ -1,5 +1,5 @@
 import { Sidebar, SidebarHeader } from "@/components/ui/sidebar";
-import { NavLink } from "react-router";
+import { Link, NavLink } from "react-router";
 import { CAFE, DISCOUNT, MENU } from "@/constants/url";
 import { cn } from "@/lib/utils";
 import { UtensilsCrossed, Coffee, Tag } from "lucide-react";
@@ -14,7 +14,7 @@ export function AppSidebar({ ...props }: React.ComponentProps<typeof Sidebar>) {
   return (
     <Sidebar {...props}>
       <SidebarHeader className="border-b py-4 text-xl text-center h-15">
-        넥스 레시피 퀴즈
+        <Link to={MENU}>넥스 레시피 퀴즈</Link>
       </SidebarHeader>
 
       {NAV_MENU.map((menu) => (
