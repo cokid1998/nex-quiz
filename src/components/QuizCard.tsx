@@ -4,6 +4,7 @@ import {
 } from "@/Provider/MunuRecipeProvider";
 import { useContext } from "react";
 import Feedback from "@/components/Feedback";
+import { shuffleArray } from "@/utils/random";
 
 export default function QuizCard() {
   const { quiz, currentQuiz, currentQuestionIndex, correctList } =
@@ -38,7 +39,7 @@ export default function QuizCard() {
 
       {/* 선택지 */}
       <div className="mt-10 space-y-3">
-        {currentQuiz.choices.map((choice, index) => (
+        {shuffleArray(currentQuiz.choices).map((choice, index) => (
           <button
             key={choice}
             className="flex w-full items-center gap-4 rounded-2xl border border-zinc-200 bg-white px-5 py-4 text-left transition-all hover:border-zinc-300 hover:bg-zinc-50 cursor-pointer disabled:cursor-not-allowed disabled:bg-zinc-50 disabled:text-zinc-400 disabled:border-zinc-100"
