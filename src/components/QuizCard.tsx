@@ -1,21 +1,28 @@
-const MENU_RECIPE_QUIZ = [
-  {
-    menu: "넥스정식",
-    quiz: "넥스정식의 사이드 메뉴는?",
-    answer: "소세지",
-    choices: ["소세지", "돈가스", "탕수육", "치킨텐더"],
-  },
-];
+import {
+  MenuRecipeActionContext,
+  MenuRecipeContext,
+} from "@/Provider/MunuRecipeProvider";
+import { useContext } from "react";
+import Feedback from "@/components/Feedback";
 
 export default function QuizCard() {
-  const currentQuiz = MENU_RECIPE_QUIZ[0];
+  const { quiz, currentQuiz, currentQuestionIndex, correctList } =
+    useContext(MenuRecipeContext)!;
+  const { handleNextQuestion, handleChoiceAnswer } = useContext(
+    MenuRecipeActionContext,
+  )!;
+
+  const isChoice = correctList.length === currentQuestionIndex + 1;
+  const isCorrect = correctList[currentQuestionIndex];
 
   return (
     <div className="rounded-3xl border border-zinc-200 bg-white p-8 shadow-sm">
       {/* 진행도 */}
       <div className="mb-8">
         <div className="mb-3 flex items-center justify-between text-sm">
-          <span className="font-medium text-zinc-600">문제 1 / {1}</span>
+          <span className="font-medium text-zinc-600">
+            문제 {currentQuestionIndex + 1} / {quiz.length}
+          </span>
           <span className="text-zinc-500">100%</span>
         </div>
 
@@ -26,7 +33,7 @@ export default function QuizCard() {
 
       {/* 문제 */}
       <h2 className="mt-6 text-3xl font-semibold tracking-tight text-zinc-900">
-        넥스정식의 사이드 메뉴는?
+        {currentQuiz.question}
       </h2>
 
       {/* 선택지 */}
@@ -34,17 +41,11 @@ export default function QuizCard() {
         {currentQuiz.choices.map((choice, index) => (
           <button
             key={choice}
-            className="flex w-full items-center gap-4 rounded-2xl border border-zinc-200 bg-white px-5 py-4 text-left transition-all hover:border-zinc-300 hover:bg-zinc-50 cursor-pointer"
+            className="flex w-full items-center gap-4 rounded-2xl border border-zinc-200 bg-white px-5 py-4 text-left transition-all hover:border-zinc-300 hover:bg-zinc-50 cursor-pointer disabled:cursor-not-allowed disabled:bg-zinc-50 disabled:text-zinc-400 disabled:border-zinc-100"
+            onClick={() => handleChoiceAnswer(choice)}
+            disabled={isChoice}
           >
-            <div
-              className="
-                    flex h-8 w-8 items-center justify-center
-                    rounded-full
-                    bg-zinc-100
-                    text-sm font-semibold
-                    text-zinc-600
-                  "
-            >
+            <div className="flex h-8 w-8 items-center justify-center rounded-full bg-zinc-100 text-sm font-semibold text-zinc-600">
               {index + 1}
             </div>
 
@@ -53,11 +54,17 @@ export default function QuizCard() {
         ))}
 
         <div className="mt-8 flex justify-end">
-          <button className="rounded-xl bg-zinc-900 px-6 py-3 font-medium text-white transition-all hover:bg-zinc-800 active:scale-[0.98] cursor-pointer">
+          <button
+            disabled={!isChoice}
+            onClick={handleNextQuestion}
+            className="rounded-xl bg-zinc-900 px-6 py-3 font-medium text-white transition-all hover:bg-zinc-800 active:scale-[0.98] cursor-pointer disabled:bg-zinc-300 disabled:text-zinc-500 disabled:cursor-not-allowed disabled:hover:bg-zinc-300 disabled:active:scale-100"
+          >
             다음
           </button>
         </div>
       </div>
+
+      {isChoice && <Feedback isCorrect={isCorrect} />}
     </div>
   );
 }

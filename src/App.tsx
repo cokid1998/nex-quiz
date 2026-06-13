@@ -5,6 +5,7 @@ import Cafe from "./page/Cafe";
 import Discount from "./page/Discount";
 import Layout from "./components/base/Layout";
 import { HOME, MENU, CAFE, DISCOUNT } from "@/constants/url";
+import MunuRecipeProvider from "@/Provider/MunuRecipeProvider";
 
 function App() {
   return (
@@ -12,7 +13,14 @@ function App() {
       <Routes>
         <Route path={HOME} element={<Layout />}>
           <Route index element={<Root />} />
-          <Route path={MENU} element={<Menu />} />
+          <Route
+            path={MENU}
+            element={
+              <MunuRecipeProvider>
+                <Menu />
+              </MunuRecipeProvider>
+            }
+          />
           <Route path={CAFE} element={<Cafe />} />
           <Route path={DISCOUNT} element={<Discount />} />
         </Route>
