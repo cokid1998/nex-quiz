@@ -3,7 +3,7 @@ import QuizResult from "@/components/QuizResult";
 import {
   useMenuRecipe,
   useMenuRecipeAction,
-} from "@/Provider/MunuRecipeProvider";
+} from "@/Provider/MenuRecipeProvider";
 
 export default function Menu() {
   const { quiz, currentQuestionIndex, correctList, currentQuiz } =

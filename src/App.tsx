@@ -4,7 +4,7 @@ import Cafe from "./page/Cafe";
 import Discount from "./page/Discount";
 import Layout from "./components/base/Layout";
 import { MENU, CAFE, DISCOUNT } from "@/constants/url";
-import MunuRecipeProvider from "@/Provider/MunuRecipeProvider";
+import MenuProvider from "@/Provider/MenuRecipeProvider";
 import CafeRecipeProvider from "@/Provider/CafeRecipeProvider";
 import DiscountProvider from "@/Provider/DiscountProvider";
 
@@ -16,9 +16,9 @@ function App() {
           <Route
             index
             element={
-              <MunuRecipeProvider>
+              <MenuProvider>
                 <Menu />
-              </MunuRecipeProvider>
+              </MenuProvider>
             }
           />
           <Route
