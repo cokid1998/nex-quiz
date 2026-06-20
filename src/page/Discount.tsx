@@ -4,7 +4,7 @@ import { useDiscount, useDiscountAction } from "@/Provider/DiscountProvider";
 
 export default function Discount() {
   const { quiz, currentQuizIndex, correctList, currentQuiz } = useDiscount();
-  const { handleChoiceAnswer, handleNextQuestion, handleReset } =
+  const { handleChoiceAnswer, handleNextQuiz, handleReset } =
     useDiscountAction();
 
   const isDone = currentQuizIndex === quiz.length;
@@ -25,7 +25,7 @@ export default function Discount() {
             currentQuizIndex={currentQuizIndex}
             correctList={correctList}
             handleChoiceAnswer={handleChoiceAnswer}
-            handleNextQuestion={handleNextQuestion}
+            handleNextQuiz={handleNextQuiz}
           />
         )}
       </div>

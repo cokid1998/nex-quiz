@@ -7,7 +7,7 @@ import {
 
 export default function Cafe() {
   const { quiz, currentQuiz, currentQuizIndex, correctList } = useCafeRecipe();
-  const { handleChoiceAnswer, handleNextQuestion, handleReset } =
+  const { handleChoiceAnswer, handleNextQuiz, handleReset } =
     useCafeRecipeAction();
 
   const isDone = currentQuizIndex === quiz.length;
@@ -28,7 +28,7 @@ export default function Cafe() {
             currentQuizIndex={currentQuizIndex}
             correctList={correctList}
             handleChoiceAnswer={handleChoiceAnswer}
-            handleNextQuestion={handleNextQuestion}
+            handleNextQuiz={handleNextQuiz}
           />
         )}
       </div>

@@ -11,7 +11,7 @@ export interface RecipeContextType {
   correctList: boolean[];
 }
 export type RecipeActionContextType = {
-  handleNextQuestion: () => void;
+  handleNextQuiz: () => void;
   handleChoiceAnswer: (selectedAnswer: string) => void;
   handleReset: () => void;
 };

@@ -17,7 +17,7 @@ export default function MenuRecipeProvider({
 
   const currentQuiz = MENU_RECIPE_QUIZ[currentQuizIndex];
 
-  const handleNextQuestion = () => {
+  const handleNextQuiz = () => {
     setCurrentQuizIndex((prev) => prev + 1);
   };
 
@@ -43,7 +43,7 @@ export default function MenuRecipeProvider({
     >
       <MenuRecipeActionContext.Provider
         value={{
-          handleNextQuestion, // 다음 문제 핸들런
+          handleNextQuiz, // 다음 문제 핸들런
           handleChoiceAnswer,
           handleReset,
         }}

@@ -11,7 +11,7 @@ export default function QuizCard({
   currentQuizIndex,
   correctList,
   handleChoiceAnswer,
-  handleNextQuestion,
+  handleNextQuiz,
 }: Props) {
   const isChoice = correctList.length === currentQuizIndex + 1;
   const isCorrect = correctList[currentQuizIndex];
@@ -57,7 +57,7 @@ export default function QuizCard({
         <div className="mt-8 flex justify-end">
           <button
             disabled={!isChoice}
-            onClick={handleNextQuestion}
+            onClick={handleNextQuiz}
             className="rounded-xl bg-zinc-900 px-6 py-3 font-medium text-white transition-all hover:bg-zinc-800 active:scale-[0.98] cursor-pointer disabled:bg-zinc-300 disabled:text-zinc-500 disabled:cursor-not-allowed disabled:hover:bg-zinc-300 disabled:active:scale-100"
           >
             다음

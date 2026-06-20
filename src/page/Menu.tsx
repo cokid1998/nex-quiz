@@ -7,7 +7,7 @@ import {
 
 export default function Menu() {
   const { quiz, currentQuizIndex, correctList, currentQuiz } = useMenuRecipe();
-  const { handleChoiceAnswer, handleNextQuestion, handleReset } =
+  const { handleChoiceAnswer, handleNextQuiz, handleReset } =
     useMenuRecipeAction();
 
   const isDone = currentQuizIndex === quiz.length;
@@ -28,7 +28,7 @@ export default function Menu() {
             correctList={correctList}
             currentQuiz={currentQuiz}
             handleChoiceAnswer={handleChoiceAnswer}
-            handleNextQuestion={handleNextQuestion}
+            handleNextQuiz={handleNextQuiz}
           />
         )}
       </div>

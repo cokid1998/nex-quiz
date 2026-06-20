@@ -43,7 +43,7 @@ export default function CafeRecipeProvider({
     >
       <CafeRecipeActionContext.Provider
         value={{
-          handleNextQuestion,
+          handleNextQuiz: handleNextQuestion,
           handleChoiceAnswer,
           handleReset,
         }}

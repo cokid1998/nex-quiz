@@ -17,7 +17,7 @@ export default function DiscountProvider({
 
   const currentQuiz = DISCOUNT_QUIZ[currentQuizIndex];
 
-  const handleNextQuestion = () => {
+  const handleNextQuiz = () => {
     setCurrentQuizIndex((prev) => prev + 1);
   };
 
@@ -37,14 +37,14 @@ export default function DiscountProvider({
       value={{
         quiz: DISCOUNT_QUIZ,
         currentQuiz,
-        currentQuizIndex: currentQuizIndex,
+        currentQuizIndex,
         correctList,
       }}
     >
       <DiscountActionContext.Provider
         value={{
           handleChoiceAnswer,
-          handleNextQuestion,
+          handleNextQuiz,
           handleReset,
         }}
       >
