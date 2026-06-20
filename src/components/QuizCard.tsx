@@ -26,7 +26,7 @@ export default function QuizCard({
           <span className="font-medium text-zinc-600">
             문제 {currentQuizIndex + 1} / {quiz.length}
           </span>
-          <span className="text-zinc-500">100%</span>
+          <span className="text-zinc-500">{Math.floor(progressPer)}%</span>
         </div>
 
         <Progress className="h-2" value={progressPer} />
