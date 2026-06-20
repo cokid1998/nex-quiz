@@ -55,7 +55,11 @@ export default function QuizResult({ correctList, quiz }: Props) {
                   p-5
                 "
               >
-                <h3 className="font-semibold text-zinc-900">{result.menu}</h3>
+                {/* <h3 className="font-semibold text-zinc-900">{result.menu}</h3> */}
+
+                <h3 className="font-semibold text-zinc-900">
+                  {result.question}
+                </h3>
 
                 <div className="mt-3 space-y-1 text-sm">
                   <p>정답: {result.answer}</p>

@@ -1,4 +1,4 @@
-import { type Quiz } from "@/Provider/MunuRecipeProvider";
+import type { Quiz } from "@/types";
 
 export const MENU_RECIPE_QUIZ: Quiz[] = [
   {
@@ -30,10 +30,6 @@ export const MENU_RECIPE_QUIZ: Quiz[] = [
     answer: "라면 + 밥 + 치즈 돈까스 + 탄산",
   },
 ];
-
-// 빨간물약: 체리가루 2스푼 + 핫식스 1캔 + 얼음
-// 체리콕: 체리가루 1스푼 + 콜라 + 얼음
-// 체리에이드: 체리가루 1스푼 + 사이다 + 얼음
 
 export const CAFE_RECIPE_QUiZ: Quiz[] = [
   {
@@ -68,5 +64,26 @@ export const CAFE_RECIPE_QUiZ: Quiz[] = [
       "체리가루 1스푼 + 사이다 + 얼음",
     ],
     answer: "체리가루 1스푼 + 사이다 + 얼음",
+  },
+];
+
+export const DISCOUNT_QUIZ: Quiz[] = [
+  {
+    menu: "라면",
+    question: "라면을 현금할인하면 얼마일까요",
+    choices: ["4,000원", "3,900원", "3,500원", "3,600원"],
+    answer: "4,000원",
+  },
+  {
+    menu: "생수",
+    question: "생수는 현금할인이 있을까요?",
+    choices: ["네", "아니요"],
+    answer: "아니요",
+  },
+  {
+    menu: "프린터",
+    question: "프린터는 현금할인이 있을까요?",
+    choices: ["네", "아니요"],
+    answer: "아니요",
   },
 ];
