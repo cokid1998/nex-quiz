@@ -5,6 +5,7 @@ import Discount from "./page/Discount";
 import Layout from "./components/base/Layout";
 import { MENU, CAFE, DISCOUNT } from "@/constants/url";
 import MunuRecipeProvider from "@/Provider/MunuRecipeProvider";
+import CafeRecipeProvider from "@/Provider/CafeRecipeProvider";
 
 function App() {
   return (
@@ -19,7 +20,14 @@ function App() {
               </MunuRecipeProvider>
             }
           />
-          <Route path={CAFE} element={<Cafe />} />
+          <Route
+            path={CAFE}
+            element={
+              <CafeRecipeProvider>
+                <Cafe />
+              </CafeRecipeProvider>
+            }
+          />
           <Route path={DISCOUNT} element={<Discount />} />
         </Route>
       </Routes>
