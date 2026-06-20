@@ -1,5 +1,4 @@
-import { MenuRecipeContext } from "@/Provider/MunuRecipeProvider";
-import { useContext } from "react";
+import type { RecipeContextType } from "@/types";
 
 function CorrectFeedBack() {
   return (
@@ -9,8 +8,9 @@ function CorrectFeedBack() {
   );
 }
 
-function WrongFeedback() {
-  const { currentQuiz } = useContext(MenuRecipeContext)!;
+function WrongFeedback({
+  currentQuiz,
+}: Pick<RecipeContextType, "currentQuiz">) {
   return (
     <div className="mt-4 rounded-2xl border border-red-200 bg-red-50 p-5">
       <p className="font-semibold text-red-700">오답입니다</p>
@@ -19,8 +19,11 @@ function WrongFeedback() {
   );
 }
 
-export default function Feedback({ isCorrect }: { isCorrect: boolean }) {
+export default function Feedback({
+  isCorrect,
+  currentQuiz,
+}: Pick<RecipeContextType, "currentQuiz"> & { isCorrect: boolean }) {
   if (isCorrect) return <CorrectFeedBack />;
 
-  return <WrongFeedback />;
+  return <WrongFeedback currentQuiz={currentQuiz} />;
 }

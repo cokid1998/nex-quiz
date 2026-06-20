@@ -1,30 +1,11 @@
-import { createContext, useState, type ReactNode } from "react";
+import { createContext, useContext, useState, type ReactNode } from "react";
 import { MENU_RECIPE_QUIZ } from "@/constants/Recipe";
+import type { RecipeContextType, RecipeActionContextType } from "@/types";
 
-export type Quiz = {
-  menu: string;
-  question: string;
-  answer: string;
-  choices: string[];
-};
-export type MenuRecipeContextType = {
-  quiz: Quiz[];
-  currentQuiz: Quiz;
-  currentQuestionIndex: number;
-  correctList: boolean[];
-};
-export type MenuRecipeActionContextType = {
-  handleNextQuestion: () => void;
-  handleChoiceAnswer: (selectedAnswer: string) => void;
-};
-
-// eslint-disable-next-line react-refresh/only-export-components
-export const MenuRecipeContext = createContext<MenuRecipeContextType | null>(
+const MenuRecipeContext = createContext<RecipeContextType | null>(null);
+const MenuRecipeActionContext = createContext<RecipeActionContextType | null>(
   null,
 );
-// eslint-disable-next-line react-refresh/only-export-components
-export const MenuRecipeActionContext =
-  createContext<MenuRecipeActionContextType | null>(null);
 
 export default function MenuRecipeProvider({
   children,
@@ -66,3 +47,28 @@ export default function MenuRecipeProvider({
     </MenuRecipeContext.Provider>
   );
 }
+
+// eslint-disable-next-line react-refresh/only-export-components
+export const useMenuRecipe = () => {
+  const context = useContext(MenuRecipeContext);
+
+  if (!context) {
+    throw new Error(
+      "useMenuRecipe는 MenuRecipeProvider안에서만 사용할 수 있습니다.",
+    );
+  }
+
+  return context;
+};
+// eslint-disable-next-line react-refresh/only-export-components
+export const useMenuRecipeAction = () => {
+  const context = useContext(MenuRecipeActionContext);
+
+  if (!context) {
+    throw new Error(
+      "useMenuRecipeAction는 MenuRecipeActionProvider안에서만 사용할 수 있습니다.",
+    );
+  }
+
+  return context;
+};

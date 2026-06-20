@@ -1,18 +1,17 @@
-import {
-  MenuRecipeActionContext,
-  MenuRecipeContext,
-} from "@/Provider/MunuRecipeProvider";
-import { useContext } from "react";
 import Feedback from "@/components/Feedback";
 import { shuffleArray } from "@/utils/random";
+import type { RecipeActionContextType, RecipeContextType } from "@/types";
 
-export default function QuizCard() {
-  const { quiz, currentQuiz, currentQuestionIndex, correctList } =
-    useContext(MenuRecipeContext)!;
-  const { handleNextQuestion, handleChoiceAnswer } = useContext(
-    MenuRecipeActionContext,
-  )!;
+type Props = RecipeContextType & RecipeActionContextType;
 
+export default function QuizCard({
+  quiz,
+  currentQuiz,
+  currentQuestionIndex,
+  correctList,
+  handleChoiceAnswer,
+  handleNextQuestion,
+}: Props) {
   const isChoice = correctList.length === currentQuestionIndex + 1;
   const isCorrect = correctList[currentQuestionIndex];
 
@@ -65,7 +64,7 @@ export default function QuizCard() {
         </div>
       </div>
 
-      {isChoice && <Feedback isCorrect={isCorrect} />}
+      {isChoice && <Feedback currentQuiz={currentQuiz} isCorrect={isCorrect} />}
     </div>
   );
 }

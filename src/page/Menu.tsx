@@ -1,17 +1,32 @@
 import QuizCard from "@/components/QuizCard";
 import QuizResult from "@/components/QuizResult";
-import { MenuRecipeContext } from "@/Provider/MunuRecipeProvider";
-import { useContext } from "react";
+import {
+  useMenuRecipe,
+  useMenuRecipeAction,
+} from "@/Provider/MunuRecipeProvider";
 
 export default function Menu() {
-  const { quiz, currentQuestionIndex } = useContext(MenuRecipeContext)!;
+  const { quiz, currentQuestionIndex, correctList, currentQuiz } =
+    useMenuRecipe();
+  const { handleChoiceAnswer, handleNextQuestion } = useMenuRecipeAction();
 
   const isDone = currentQuestionIndex === quiz.length;
 
   return (
     <div className="min-h-[calc(100vh-var(--top-magic-number))] bg-zinc-50 p-6 rounded-lg">
       <div className="mx-auto max-w-3xl">
-        {isDone ? <QuizResult /> : <QuizCard />}
+        {isDone ? (
+          <QuizResult quiz={quiz} correctList={correctList} />
+        ) : (
+          <QuizCard
+            quiz={quiz}
+            currentQuestionIndex={currentQuestionIndex}
+            correctList={correctList}
+            currentQuiz={currentQuiz}
+            handleChoiceAnswer={handleChoiceAnswer}
+            handleNextQuestion={handleNextQuestion}
+          />
+        )}
       </div>
     </div>
   );

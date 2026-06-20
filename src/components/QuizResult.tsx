@@ -1,9 +1,8 @@
-import { MenuRecipeContext } from "@/Provider/MunuRecipeProvider";
-import { useContext } from "react";
+import type { RecipeContextType } from "@/types";
 
-export default function QuizResult() {
-  const { correctList, quiz } = useContext(MenuRecipeContext)!;
+type Props = Pick<RecipeContextType, "correctList" | "quiz">;
 
+export default function QuizResult({ correctList, quiz }: Props) {
   const correctCount = correctList.filter((result) => result).length;
   const accuracy = Math.round((correctCount / quiz.length) * 100);
 
