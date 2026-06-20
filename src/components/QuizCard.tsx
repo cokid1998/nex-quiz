@@ -3,7 +3,7 @@ import { shuffleArray } from "@/utils/random";
 import type { RecipeActionContextType, RecipeContextType } from "@/types";
 import { Progress } from "@/components/ui/progress";
 
-type Props = RecipeContextType & RecipeActionContextType;
+type Props = RecipeContextType & Omit<RecipeActionContextType, "handleReset">;
 
 export default function QuizCard({
   quiz,

@@ -27,6 +27,11 @@ export default function CafeRecipeProvider({
     setCorrectList((prev) => [...prev, isCorrect]);
   };
 
+  const handleReset = () => {
+    setCurrentQuestionIndex(0);
+    setCorrectList([]);
+  };
+
   return (
     <CafeRecipeContext.Provider
       value={{
@@ -40,6 +45,7 @@ export default function CafeRecipeProvider({
         value={{
           handleNextQuestion,
           handleChoiceAnswer,
+          handleReset,
         }}
       >
         {children}

@@ -27,6 +27,11 @@ export default function MenuRecipeProvider({
     setCorrectList((prev) => [...prev, isCorrect]);
   };
 
+  const handleReset = () => {
+    setCurrentQuestionIndex(0);
+    setCorrectList([]);
+  };
+
   return (
     <MenuRecipeContext.Provider
       value={{
@@ -40,6 +45,7 @@ export default function MenuRecipeProvider({
         value={{
           handleNextQuestion, // 다음 문제 핸들런
           handleChoiceAnswer,
+          handleReset,
         }}
       >
         {children}

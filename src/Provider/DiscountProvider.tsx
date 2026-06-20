@@ -27,6 +27,11 @@ export default function DiscountProvider({
     setCorrectList((prev) => [...prev, isCorrect]);
   };
 
+  const handleReset = () => {
+    setCurrentQuestionIndex(0);
+    setCorrectList([]);
+  };
+
   return (
     <DiscountContext.Provider
       value={{
@@ -40,6 +45,7 @@ export default function DiscountProvider({
         value={{
           handleChoiceAnswer,
           handleNextQuestion,
+          handleReset,
         }}
       >
         {children}

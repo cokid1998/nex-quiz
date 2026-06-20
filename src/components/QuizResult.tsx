@@ -1,8 +1,9 @@
-import type { RecipeContextType } from "@/types";
+import type { RecipeActionContextType, RecipeContextType } from "@/types";
 
-type Props = Pick<RecipeContextType, "correctList" | "quiz">;
+type Props = Pick<RecipeContextType, "correctList" | "quiz"> &
+  Pick<RecipeActionContextType, "handleReset">;
 
-export default function QuizResult({ correctList, quiz }: Props) {
+export default function QuizResult({ correctList, quiz, handleReset }: Props) {
   const correctCount = correctList.filter((result) => result).length;
   const accuracy = Math.round((correctCount / quiz.length) * 100);
 
@@ -34,7 +35,10 @@ export default function QuizResult({ correctList, quiz }: Props) {
           </div>
         </div>
 
-        <button className="mt-8 rounded-xl bg-zinc-900 px-6 py-3 font-medium text-white hover:bg-zinc-800">
+        <button
+          onClick={handleReset}
+          className="mt-8 rounded-xl bg-zinc-900 px-6 py-3 font-medium text-white hover:bg-zinc-800 cursor-pointer"
+        >
           다시 풀기
         </button>
       </div>

@@ -5,7 +5,8 @@ import { useDiscount, useDiscountAction } from "@/Provider/DiscountProvider";
 export default function Discount() {
   const { quiz, currentQuestionIndex, correctList, currentQuiz } =
     useDiscount();
-  const { handleChoiceAnswer, handleNextQuestion } = useDiscountAction();
+  const { handleChoiceAnswer, handleNextQuestion, handleReset } =
+    useDiscountAction();
 
   const isDone = currentQuestionIndex === quiz.length;
 
@@ -13,7 +14,11 @@ export default function Discount() {
     <div className="min-h-[calc(100vh-var(--top-magic-number))] bg-zinc-50 p-6 rounded-lg">
       <div className="mx-auto max-w-3xl">
         {isDone ? (
-          <QuizResult quiz={quiz} correctList={correctList} />
+          <QuizResult
+            quiz={quiz}
+            correctList={correctList}
+            handleReset={handleReset}
+          />
         ) : (
           <QuizCard
             quiz={quiz}

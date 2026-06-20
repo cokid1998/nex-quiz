@@ -8,7 +8,8 @@ import {
 export default function Menu() {
   const { quiz, currentQuestionIndex, correctList, currentQuiz } =
     useMenuRecipe();
-  const { handleChoiceAnswer, handleNextQuestion } = useMenuRecipeAction();
+  const { handleChoiceAnswer, handleNextQuestion, handleReset } =
+    useMenuRecipeAction();
 
   const isDone = currentQuestionIndex === quiz.length;
 
@@ -16,7 +17,11 @@ export default function Menu() {
     <div className="min-h-[calc(100vh-var(--top-magic-number))] bg-zinc-50 p-6 rounded-lg">
       <div className="mx-auto max-w-3xl">
         {isDone ? (
-          <QuizResult quiz={quiz} correctList={correctList} />
+          <QuizResult
+            quiz={quiz}
+            correctList={correctList}
+            handleReset={handleReset}
+          />
         ) : (
           <QuizCard
             quiz={quiz}

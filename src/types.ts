@@ -13,4 +13,5 @@ export interface RecipeContextType {
 export type RecipeActionContextType = {
   handleNextQuestion: () => void;
   handleChoiceAnswer: (selectedAnswer: string) => void;
+  handleReset: () => void;
 };
