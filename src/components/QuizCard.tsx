@@ -1,6 +1,7 @@
 import Feedback from "@/components/Feedback";
 import { shuffleArray } from "@/utils/random";
 import type { RecipeActionContextType, RecipeContextType } from "@/types";
+import { Progress } from "@/components/ui/progress";
 
 type Props = RecipeContextType & RecipeActionContextType;
 
@@ -14,10 +15,12 @@ export default function QuizCard({
 }: Props) {
   const isChoice = correctList.length === currentQuestionIndex + 1;
   const isCorrect = correctList[currentQuestionIndex];
+  const progressPer = ((currentQuestionIndex + 1) / quiz.length) * 100;
 
   return (
     <div className="rounded-3xl border border-zinc-200 bg-white p-8 shadow-sm">
       {/* 진행도 */}
+
       <div className="mb-8">
         <div className="mb-3 flex items-center justify-between text-sm">
           <span className="font-medium text-zinc-600">
@@ -26,9 +29,7 @@ export default function QuizCard({
           <span className="text-zinc-500">100%</span>
         </div>
 
-        <div className="h-2 overflow-hidden rounded-full bg-zinc-100">
-          <div className="h-full w-full rounded-full bg-zinc-900" />
-        </div>
+        <Progress className="h-2" value={progressPer} />
       </div>
 
       {/* 문제 */}
