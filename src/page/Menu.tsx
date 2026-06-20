@@ -6,12 +6,11 @@ import {
 } from "@/Provider/MenuRecipeProvider";
 
 export default function Menu() {
-  const { quiz, currentQuestionIndex, correctList, currentQuiz } =
-    useMenuRecipe();
+  const { quiz, currentQuizIndex, correctList, currentQuiz } = useMenuRecipe();
   const { handleChoiceAnswer, handleNextQuestion, handleReset } =
     useMenuRecipeAction();
 
-  const isDone = currentQuestionIndex === quiz.length;
+  const isDone = currentQuizIndex === quiz.length;
 
   return (
     <div className="min-h-[calc(100vh-var(--top-magic-number))] bg-zinc-50 p-6 rounded-lg">
@@ -25,7 +24,7 @@ export default function Menu() {
         ) : (
           <QuizCard
             quiz={quiz}
-            currentQuestionIndex={currentQuestionIndex}
+            currentQuizIndex={currentQuizIndex}
             correctList={correctList}
             currentQuiz={currentQuiz}
             handleChoiceAnswer={handleChoiceAnswer}

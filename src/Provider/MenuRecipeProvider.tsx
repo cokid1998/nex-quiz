@@ -12,13 +12,13 @@ export default function MenuRecipeProvider({
 }: {
   children: ReactNode;
 }) {
-  const [currentQuestionIndex, setCurrentQuestionIndex] = useState(0);
+  const [currentQuizIndex, setCurrentQuizIndex] = useState(0);
   const [correctList, setCorrectList] = useState<boolean[]>([]);
 
-  const currentQuiz = MENU_RECIPE_QUIZ[currentQuestionIndex];
+  const currentQuiz = MENU_RECIPE_QUIZ[currentQuizIndex];
 
   const handleNextQuestion = () => {
-    setCurrentQuestionIndex((prev) => prev + 1);
+    setCurrentQuizIndex((prev) => prev + 1);
   };
 
   const handleChoiceAnswer = (selectedAnswer: string) => {
@@ -28,7 +28,7 @@ export default function MenuRecipeProvider({
   };
 
   const handleReset = () => {
-    setCurrentQuestionIndex(0);
+    setCurrentQuizIndex(0);
     setCorrectList([]);
   };
 
@@ -37,7 +37,7 @@ export default function MenuRecipeProvider({
       value={{
         quiz: MENU_RECIPE_QUIZ, // 퀴즈 데이터
         currentQuiz, // 현재 퀴즈
-        currentQuestionIndex, // 현재 퀴즈 문제 번호
+        currentQuizIndex: currentQuizIndex, // 현재 퀴즈 문제 번호
         correctList, // 정답현황 리스트
       }}
     >

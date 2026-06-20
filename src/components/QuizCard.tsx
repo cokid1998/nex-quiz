@@ -8,14 +8,14 @@ type Props = RecipeContextType & Omit<RecipeActionContextType, "handleReset">;
 export default function QuizCard({
   quiz,
   currentQuiz,
-  currentQuestionIndex,
+  currentQuizIndex,
   correctList,
   handleChoiceAnswer,
   handleNextQuestion,
 }: Props) {
-  const isChoice = correctList.length === currentQuestionIndex + 1;
-  const isCorrect = correctList[currentQuestionIndex];
-  const progressPer = ((currentQuestionIndex + 1) / quiz.length) * 100;
+  const isChoice = correctList.length === currentQuizIndex + 1;
+  const isCorrect = correctList[currentQuizIndex];
+  const progressPer = ((currentQuizIndex + 1) / quiz.length) * 100;
 
   return (
     <div className="rounded-3xl border border-zinc-200 bg-white p-8 shadow-sm">
@@ -24,7 +24,7 @@ export default function QuizCard({
       <div className="mb-8">
         <div className="mb-3 flex items-center justify-between text-sm">
           <span className="font-medium text-zinc-600">
-            문제 {currentQuestionIndex + 1} / {quiz.length}
+            문제 {currentQuizIndex + 1} / {quiz.length}
           </span>
           <span className="text-zinc-500">100%</span>
         </div>

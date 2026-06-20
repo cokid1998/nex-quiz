@@ -6,12 +6,11 @@ import {
 } from "@/Provider/CafeRecipeProvider";
 
 export default function Cafe() {
-  const { quiz, currentQuiz, currentQuestionIndex, correctList } =
-    useCafeRecipe();
+  const { quiz, currentQuiz, currentQuizIndex, correctList } = useCafeRecipe();
   const { handleChoiceAnswer, handleNextQuestion, handleReset } =
     useCafeRecipeAction();
 
-  const isDone = currentQuestionIndex === quiz.length;
+  const isDone = currentQuizIndex === quiz.length;
 
   return (
     <div className="min-h-[calc(100vh-var(--top-magic-number))] bg-zinc-50 p-6 rounded-lg">
@@ -26,7 +25,7 @@ export default function Cafe() {
           <QuizCard
             quiz={quiz}
             currentQuiz={currentQuiz}
-            currentQuestionIndex={currentQuestionIndex}
+            currentQuizIndex={currentQuizIndex}
             correctList={correctList}
             handleChoiceAnswer={handleChoiceAnswer}
             handleNextQuestion={handleNextQuestion}

@@ -12,13 +12,13 @@ export default function DiscountProvider({
 }: {
   children: ReactNode;
 }) {
-  const [currentQuestionIndex, setCurrentQuestionIndex] = useState(0);
+  const [currentQuizIndex, setCurrentQuizIndex] = useState(0);
   const [correctList, setCorrectList] = useState<boolean[]>([]);
 
-  const currentQuiz = DISCOUNT_QUIZ[currentQuestionIndex];
+  const currentQuiz = DISCOUNT_QUIZ[currentQuizIndex];
 
   const handleNextQuestion = () => {
-    setCurrentQuestionIndex((prev) => prev + 1);
+    setCurrentQuizIndex((prev) => prev + 1);
   };
 
   const handleChoiceAnswer = (selectedAnswer: string) => {
@@ -28,7 +28,7 @@ export default function DiscountProvider({
   };
 
   const handleReset = () => {
-    setCurrentQuestionIndex(0);
+    setCurrentQuizIndex(0);
     setCorrectList([]);
   };
 
@@ -37,7 +37,7 @@ export default function DiscountProvider({
       value={{
         quiz: DISCOUNT_QUIZ,
         currentQuiz,
-        currentQuestionIndex,
+        currentQuizIndex: currentQuizIndex,
         correctList,
       }}
     >

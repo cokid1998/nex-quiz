@@ -12,13 +12,13 @@ export default function CafeRecipeProvider({
 }: {
   children: ReactNode;
 }) {
-  const [currentQuestionIndex, setCurrentQuestionIndex] = useState(0);
+  const [currentQuizIndex, setCurrentQuizIndex] = useState(0);
   const [correctList, setCorrectList] = useState<boolean[]>([]);
 
-  const currentQuiz = CAFE_RECIPE_QUiZ[currentQuestionIndex];
+  const currentQuiz = CAFE_RECIPE_QUiZ[currentQuizIndex];
 
   const handleNextQuestion = () => {
-    setCurrentQuestionIndex((prev) => prev + 1);
+    setCurrentQuizIndex((prev) => prev + 1);
   };
 
   const handleChoiceAnswer = (selectedAnswer: string) => {
@@ -28,7 +28,7 @@ export default function CafeRecipeProvider({
   };
 
   const handleReset = () => {
-    setCurrentQuestionIndex(0);
+    setCurrentQuizIndex(0);
     setCorrectList([]);
   };
 
@@ -37,7 +37,7 @@ export default function CafeRecipeProvider({
       value={{
         quiz: CAFE_RECIPE_QUiZ,
         currentQuiz,
-        currentQuestionIndex,
+        currentQuizIndex,
         correctList,
       }}
     >

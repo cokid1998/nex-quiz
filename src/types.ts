@@ -7,7 +7,7 @@ export interface Quiz {
 export interface RecipeContextType {
   quiz: Quiz[];
   currentQuiz: Quiz;
-  currentQuestionIndex: number;
+  currentQuizIndex: number;
   correctList: boolean[];
 }
 export type RecipeActionContextType = {
