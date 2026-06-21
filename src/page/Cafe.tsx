@@ -1,14 +1,10 @@
 import QuizResult from "@/components/QuizResult";
 import QuizCard from "@/components/QuizCard";
-import {
-  useCafeRecipe,
-  useCafeRecipeAction,
-} from "@/Provider/CafeRecipeProvider";
+import { useCafeQuiz, useCafeAction } from "@/Provider/CafeQuizProvider";
 
 export default function Cafe() {
-  const { quiz, currentQuiz, currentQuizIndex, correctList } = useCafeRecipe();
-  const { handleChoiceAnswer, handleNextQuiz, handleReset } =
-    useCafeRecipeAction();
+  const { quiz, currentQuiz, currentQuizIndex, correctList } = useCafeQuiz();
+  const { handleChoiceAnswer, handleNextQuiz, handleReset } = useCafeAction();
 
   const isDone = currentQuizIndex === quiz.length;
 

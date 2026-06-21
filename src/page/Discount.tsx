@@ -1,11 +1,15 @@
 import QuizResult from "@/components/QuizResult";
 import QuizCard from "@/components/QuizCard";
-import { useDiscount, useDiscountAction } from "@/Provider/DiscountProvider";
+import {
+  useDiscountQuiz,
+  useDiscountQuizAction,
+} from "@/Provider/DiscountQuizProvider";
 
 export default function Discount() {
-  const { quiz, currentQuizIndex, correctList, currentQuiz } = useDiscount();
+  const { quiz, currentQuizIndex, correctList, currentQuiz } =
+    useDiscountQuiz();
   const { handleChoiceAnswer, handleNextQuiz, handleReset } =
-    useDiscountAction();
+    useDiscountQuizAction();
 
   const isDone = currentQuizIndex === quiz.length;
 

@@ -4,9 +4,9 @@ import Cafe from "./page/Cafe";
 import Discount from "./page/Discount";
 import Layout from "./components/base/Layout";
 import { MENU, CAFE, DISCOUNT } from "@/constants/url";
-import MenuProvider from "@/Provider/MenuRecipeProvider";
-import CafeRecipeProvider from "@/Provider/CafeRecipeProvider";
-import DiscountProvider from "@/Provider/DiscountProvider";
+import MenuQuizProvider from "@/Provider/MenuQuizProvider";
+import CafeQuizProvider from "@/Provider/CafeQuizProvider";
+import DiscountQuizProvider from "@/Provider/DiscountQuizProvider";
 
 function App() {
   return (
@@ -16,25 +16,25 @@ function App() {
           <Route
             index
             element={
-              <MenuProvider>
+              <MenuQuizProvider>
                 <Menu />
-              </MenuProvider>
+              </MenuQuizProvider>
             }
           />
           <Route
             path={CAFE}
             element={
-              <CafeRecipeProvider>
+              <CafeQuizProvider>
                 <Cafe />
-              </CafeRecipeProvider>
+              </CafeQuizProvider>
             }
           />
           <Route
             path={DISCOUNT}
             element={
-              <DiscountProvider>
+              <DiscountQuizProvider>
                 <Discount />
-              </DiscountProvider>
+              </DiscountQuizProvider>
             }
           />
         </Route>

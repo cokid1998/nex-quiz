@@ -1,14 +1,10 @@
 import QuizCard from "@/components/QuizCard";
 import QuizResult from "@/components/QuizResult";
-import {
-  useMenuRecipe,
-  useMenuRecipeAction,
-} from "@/Provider/MenuRecipeProvider";
+import { useMenuQuiz, useMenuAction } from "@/Provider/MenuQuizProvider";
 
 export default function Menu() {
-  const { quiz, currentQuizIndex, correctList, currentQuiz } = useMenuRecipe();
-  const { handleChoiceAnswer, handleNextQuiz, handleReset } =
-    useMenuRecipeAction();
+  const { quiz, currentQuizIndex, correctList, currentQuiz } = useMenuQuiz();
+  const { handleChoiceAnswer, handleNextQuiz, handleReset } = useMenuAction();
 
   const isDone = currentQuizIndex === quiz.length;
 
