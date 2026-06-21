@@ -1,7 +1,7 @@
-import type { RecipeActionContextType, RecipeContextType } from "@/types";
+import type { QuizActionContextType, QuizContextType } from "@/types";
 
-type Props = Pick<RecipeContextType, "correctList" | "quiz"> &
-  Pick<RecipeActionContextType, "handleReset">;
+type Props = Pick<QuizContextType, "correctList" | "quiz"> &
+  Pick<QuizActionContextType, "handleReset">;
 
 export default function QuizResult({ correctList, quiz, handleReset }: Props) {
   const correctCount = correctList.filter((result) => result).length;

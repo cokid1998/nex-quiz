@@ -1,11 +1,9 @@
 import { DISCOUNT_QUIZ } from "@/constants/Recipe";
-import type { RecipeActionContextType, RecipeContextType } from "@/types";
+import type { QuizActionContextType, QuizContextType } from "@/types";
 import { createContext, useContext, useState, type ReactNode } from "react";
 
-const DiscountContext = createContext<RecipeContextType | null>(null);
-const DiscountActionContext = createContext<RecipeActionContextType | null>(
-  null,
-);
+const DiscountContext = createContext<QuizContextType | null>(null);
+const DiscountActionContext = createContext<QuizActionContextType | null>(null);
 
 export default function DiscountProvider({
   children,

@@ -4,13 +4,13 @@ export interface Quiz {
   answer: string;
   choices: string[];
 }
-export interface RecipeContextType {
+export interface QuizContextType {
   quiz: Quiz[];
   currentQuiz: Quiz;
   currentQuizIndex: number;
   correctList: boolean[];
 }
-export type RecipeActionContextType = {
+export type QuizActionContextType = {
   handleNextQuiz: () => void;
   handleChoiceAnswer: (selectedAnswer: string) => void;
   handleReset: () => void;

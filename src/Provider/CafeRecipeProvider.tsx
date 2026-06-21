@@ -1,9 +1,9 @@
 import { createContext, type ReactNode, useContext, useState } from "react";
-import type { RecipeContextType, RecipeActionContextType } from "@/types";
+import type { QuizContextType, QuizActionContextType } from "@/types";
 import { CAFE_RECIPE_QUiZ } from "@/constants/Recipe";
 
-const CafeRecipeContext = createContext<RecipeContextType | null>(null);
-const CafeRecipeActionContext = createContext<RecipeActionContextType | null>(
+const CafeRecipeContext = createContext<QuizContextType | null>(null);
+const CafeRecipeActionContext = createContext<QuizActionContextType | null>(
   null,
 );
 

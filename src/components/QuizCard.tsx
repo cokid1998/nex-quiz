@@ -1,10 +1,10 @@
 import Feedback from "@/components/Feedback";
 import { shuffleArray } from "@/utils/random";
-import type { RecipeActionContextType, RecipeContextType } from "@/types";
+import type { QuizActionContextType, QuizContextType } from "@/types";
 import { Progress } from "@/components/ui/progress";
 import { useMemo } from "react";
 
-type Props = RecipeContextType & Omit<RecipeActionContextType, "handleReset">;
+type Props = QuizContextType & Omit<QuizActionContextType, "handleReset">;
 /**
  * 버그 해결 정리
  * 선택지를 클릭했을 때 원래 순서의 선택지가 shuffleArray 함수 때문에 다시 섞이는 버그가 있음
